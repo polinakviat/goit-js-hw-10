@@ -18,7 +18,6 @@ let timerId = null;
 // Початковий стан кнопки
 startBtn.disabled = true;
 
-// Налаштування flatpickr
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -27,8 +26,9 @@ const options = {
   onClose(selectedDates) {
     const chosenDate = selectedDates[0];
     
-    if (chosenDate < new Date()) {
-      // Використовуємо iziToast замість window.alert
+    // Змінено оператор з < на <=
+    if (chosenDate <= new Date()) {
+      // Тепер теперішній момент і минуле вважаються помилкою
       iziToast.error({
         title: 'Error',
         message: 'Please choose a date in the future',
